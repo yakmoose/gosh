@@ -5,6 +5,8 @@ import (
 	"testing"
 )
 
+const exampleDotCom = "example.com."
+
 func TestEncode(t *testing.T) {
 	t.Parallel()
 	v := url.Values{}
@@ -20,37 +22,35 @@ func TestEncode(t *testing.T) {
 }
 
 func TestConstructFqdnWithAtSymbolAndName(t *testing.T) {
+	t.Parallel()
 
-	expected := "example.com."
 	result := ConstructFqdn("@", "example.com")
 
-	if result != expected {
-		t.Errorf("Expected %s but got %s", expected, result)
+	if result != exampleDotCom {
+		t.Errorf("Expected %s but got %s", exampleDotCom, result)
 	}
 }
 
 func TestConstructFqdnWithDotSymbolAndName(t *testing.T) {
-
-	expected := "example.com."
+	t.Parallel()
 	result := ConstructFqdn(".", "example.com")
 
-	if result != expected {
-		t.Errorf("Expected %s but got %s", expected, result)
+	if result != exampleDotCom {
+		t.Errorf("Expected %s but got %s", exampleDotCom, result)
 	}
 }
 
 func TestConstructFqdnWithAtSymbolAndNameAndTrailingDot(t *testing.T) {
+	t.Parallel()
+	result := ConstructFqdn("@", exampleDotCom)
 
-	expected := "example.com."
-	result := ConstructFqdn("@", "example.com.")
-
-	if result != expected {
-		t.Errorf("Expected %s but got %s", expected, result)
+	if result != exampleDotCom {
+		t.Errorf("Expected %s but got %s", exampleDotCom, result)
 	}
 }
 
 func TestConstructFqdnWithSubDomain(t *testing.T) {
-
+	t.Parallel()
 	expected := "www.example.com."
 	result := ConstructFqdn("www", "example.com")
 
@@ -60,9 +60,9 @@ func TestConstructFqdnWithSubDomain(t *testing.T) {
 }
 
 func TestConstructFqdnWithFdqn(t *testing.T) {
-
-	expected := "example.com."
-	result := ConstructFqdn("example.com.", "example.com")
+	t.Parallel()
+	expected := exampleDotCom
+	result := ConstructFqdn(exampleDotCom, "example.com")
 
 	if result != expected {
 		t.Errorf("Expected %s but got %s", expected, result)
@@ -70,7 +70,7 @@ func TestConstructFqdnWithFdqn(t *testing.T) {
 }
 
 func TestConstructFqdnWithFdqnAndSubDomain(t *testing.T) {
-
+	t.Parallel()
 	expected := "www.example.com."
 	result := ConstructFqdn("www.example.com.", "example.com")
 
@@ -80,7 +80,7 @@ func TestConstructFqdnWithFdqnAndSubDomain(t *testing.T) {
 }
 
 func TestConstructFqdnWithNotFdqnAndSubDomain(t *testing.T) {
-
+	t.Parallel()
 	expected := "www.example.com.example.com."
 	result := ConstructFqdn("www.example.com", "example.com")
 
@@ -90,8 +90,9 @@ func TestConstructFqdnWithNotFdqnAndSubDomain(t *testing.T) {
 }
 
 func TestDeconstructFqdnApex(t *testing.T) {
+	t.Parallel()
 	expected := "@"
-	result := DeconstructFqdn("example.com.", "example.com.")
+	result := DeconstructFqdn(exampleDotCom, exampleDotCom)
 
 	if result != expected {
 		t.Errorf("Expected %s but got %s", expected, result)
@@ -99,6 +100,7 @@ func TestDeconstructFqdnApex(t *testing.T) {
 }
 
 func TestDeconstructFqdnSubDomain(t *testing.T) {
+	t.Parallel()
 	expected := "www"
 	result := DeconstructFqdn("www.example.com", "example.com")
 

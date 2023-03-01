@@ -2,6 +2,7 @@ package dns
 
 import (
 	"context"
+
 	"github.com/sitehostnz/gosh/pkg/models"
 )
 
@@ -45,7 +46,6 @@ func (s *Client) GetRecordWithRecord(ctx context.Context, record models.DNSRecor
 	}
 
 	for _, r := range records.Return {
-
 		if r.Name == record.Name &&
 			// TODO:  domain is not returned in the list
 			// r.Domain == record.Domain &&
@@ -66,5 +66,4 @@ func (s *Client) GetRecordWithRecord(ctx context.Context, record models.DNSRecor
 		}
 	}
 	return nil, nil
-
 }

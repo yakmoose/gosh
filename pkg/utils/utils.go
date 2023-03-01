@@ -58,7 +58,7 @@ func AddOptions(s string, opt interface{}) (string, error) {
 	return origURL.String(), nil
 }
 
-// ConstructFqdn This is a simple helper to handle mapping of partial names and shortcuts to full names
+// ConstructFqdn This is a simple helper to handle mapping of partial names and shortcuts to full names.
 func ConstructFqdn(name, domain string) string {
 	domain = strings.ToLower(domain)
 	name = strings.ToLower(name)
@@ -81,10 +81,9 @@ func ConstructFqdn(name, domain string) string {
 
 	// otherwise, we need to append the suffix and the name together
 	return strings.Join([]string{name, domain}, ".")
-
 }
 
-// DeconstructFqdn pulls off the suffix, the opposite of above and gives us an "@" for the apex
+// DeconstructFqdn pulls off the suffix, the opposite of above and gives us an "@" for the apex.
 func DeconstructFqdn(name, domain string) string {
 	domain = strings.ToLower(domain)
 	name = strings.ToLower(name)
@@ -102,5 +101,4 @@ func DeconstructFqdn(name, domain string) string {
 	}
 
 	return strings.TrimSuffix(name, "."+domain)
-
 }

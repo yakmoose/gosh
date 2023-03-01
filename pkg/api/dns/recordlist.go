@@ -23,7 +23,7 @@ func (s *Client) ListRecords(ctx context.Context, request ListRecordsRequest) (r
 	// add back the domain name, since we have it in the model, but not in the response
 	// or at least according to the api docs
 	if response.Status {
-		for k :=range response.Return {
+		for k := range response.Return {
 			response.Return[k].Domain = request.Domain
 		}
 	}
