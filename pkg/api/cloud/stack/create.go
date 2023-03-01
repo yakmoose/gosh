@@ -1,12 +1,6 @@
 package stack
 
-import (
-	"context"
-	"net/url"
-
-	"github.com/sitehostnz/gosh/pkg/utils"
-)
-
+/*
 // Create creates a new cloud stack.
 func (s *Client) Create(ctx context.Context, request CreateRequest) (*CreateResponse, error) {
 	keys := []string{
@@ -50,3 +44,4 @@ func (s *Client) Create(ctx context.Context, request CreateRequest) (*CreateResp
 
 	return response, nil
 }
+*/
