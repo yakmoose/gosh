@@ -9,9 +9,6 @@ import (
 // Get fetches a cloud stack.
 func (s *Client) Get(ctx context.Context, request GetRequest) (response GetResponse, err error) {
 	uri := "cloud/stack/get.json"
-	if err != nil {
-		return nil, err
-	}
 	keys := []string{
 		"apikey",
 		"client_id",
