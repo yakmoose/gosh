@@ -1,4 +1,4 @@
-package sshkey
+package key
 
 import (
 	"context"
@@ -7,18 +7,17 @@ import (
 )
 
 // List returns a list of all ssh keys.
-func (s *Client) List(ctx context.Context) (*[]models.SSHKey, error) {
-	req, err := s.client.NewRequest("GET", "ssh/key/list_all.json", "")
+func (s *Client) List(ctx context.Context) (response ListResponse, err error) {
+	uri := "ssh/key/list_all.json"
+	req, err := s.client.NewRequest("GET", uri, "")
 	if err != nil {
-		return nil, err
+		return response, err
 	}
 
-	response := new(ListResponse)
-	err = s.client.Do(ctx, req, response)
-	if err != nil {
-		return nil, err
+	if err := s.client.Do(ctx, req, &response); err != nil {
+		return response, err
 	}
 
 	// if the request works, don't care about pagination right now.
-	return response.Return.SSHKeys, err
+	return response, err
 }

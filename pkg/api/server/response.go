@@ -40,7 +40,8 @@ type (
 	// ListResponse lists all servers.
 	ListResponse struct {
 		Return struct {
-			Servers *[]models.Server `json:"data"`
+			models.Pagination
+			Servers []models.Server `json:"data"`
 		} `json:"return"`
 		models.APIResponse
 	}
