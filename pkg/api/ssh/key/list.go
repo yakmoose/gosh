@@ -2,8 +2,6 @@ package key
 
 import (
 	"context"
-
-	"github.com/sitehostnz/gosh/pkg/models"
 )
 
 // List returns a list of all ssh keys.
