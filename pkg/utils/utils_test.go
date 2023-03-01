@@ -18,3 +18,91 @@ func TestEncode(t *testing.T) {
 		t.Errorf("Expected %s but got %s", expected, result)
 	}
 }
+
+func TestConstructFqdnWithAtSymbolAndName(t *testing.T) {
+
+	expected := "example.com."
+	result := ConstructFqdn("@", "example.com")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}
+
+func TestConstructFqdnWithDotSymbolAndName(t *testing.T) {
+
+	expected := "example.com."
+	result := ConstructFqdn(".", "example.com")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}
+
+func TestConstructFqdnWithAtSymbolAndNameAndTrailingDot(t *testing.T) {
+
+	expected := "example.com."
+	result := ConstructFqdn("@", "example.com.")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}
+
+func TestConstructFqdnWithSubDomain(t *testing.T) {
+
+	expected := "www.example.com."
+	result := ConstructFqdn("www", "example.com")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}
+
+func TestConstructFqdnWithFdqn(t *testing.T) {
+
+	expected := "example.com."
+	result := ConstructFqdn("example.com.", "example.com")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}
+
+func TestConstructFqdnWithFdqnAndSubDomain(t *testing.T) {
+
+	expected := "www.example.com."
+	result := ConstructFqdn("www.example.com.", "example.com")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}
+
+func TestConstructFqdnWithNotFdqnAndSubDomain(t *testing.T) {
+
+	expected := "www.example.com.example.com."
+	result := ConstructFqdn("www.example.com", "example.com")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}
+
+func TestDeconstructFqdnApex(t *testing.T) {
+	expected := "@"
+	result := DeconstructFqdn("example.com.", "example.com.")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}
+
+func TestDeconstructFqdnSubDomain(t *testing.T) {
+	expected := "www"
+	result := DeconstructFqdn("www.example.com", "example.com")
+
+	if result != expected {
+		t.Errorf("Expected %s but got %s", expected, result)
+	}
+}

@@ -20,6 +20,7 @@ type (
 
 	// DeleteRecordRequest represents a request to delete a DNSRecord.
 	DeleteRecordRequest struct {
+		ID       string `json:"id"`
 		ClientID string `json:"client_id"`
 		Domain   string `json:"domain"`
 		RecordID string `json:"record_id"`
@@ -27,6 +28,7 @@ type (
 
 	// UpdateRecordRequest represents a request to update a DNSRecord.
 	UpdateRecordRequest struct {
+		ID       string `json:"id"`
 		ClientID string `json:"client_id"`
 		Domain   string `json:"domain"`
 		RecordID string `json:"record_id"`

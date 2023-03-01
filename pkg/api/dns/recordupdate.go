@@ -27,7 +27,7 @@ func (s *Client) UpdateRecord(ctx context.Context, opts UpdateRecordRequest) (re
 	values := url.Values{}
 	values.Add("client_id", s.client.ClientID)
 	values.Add("domain", opts.Domain)
-	values.Add("record_id", opts.RecordID)
+	values.Add("record_id", opts.ID)
 	values.Add("type", opts.Type)
 	values.Add("name", opts.Name)
 	values.Add("content", opts.Content)
