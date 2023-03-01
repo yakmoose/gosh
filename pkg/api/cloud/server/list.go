@@ -13,7 +13,6 @@ func (s *Client) List(ctx context.Context) (response ListResponse, err error) {
 		return response, err
 	}
 
-	response := new(ListResponse)
 	if err := s.client.Do(ctx, req, &response); err != nil {
 		return response, err
 	}
