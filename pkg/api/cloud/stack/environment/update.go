@@ -41,7 +41,6 @@ func (s *Client) Update(ctx context.Context, request UpdateRequest) (response Up
 	}
 
 	if err := s.client.Do(ctx, req, &response); err != nil {
-	if err != nil {
 		return response, err
 	}
 
