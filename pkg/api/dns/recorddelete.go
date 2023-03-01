@@ -23,7 +23,7 @@ func (s *Client) DeleteRecord(ctx context.Context, opts DeleteRecordRequest) (re
 	values := url.Values{}
 	values.Add("client_id", s.client.ClientID)
 	values.Add("domain", opts.Domain)
-	values.Add("record_id", opts.ID)
+	values.Add("record_id", opts.RecordID)
 
 	req, err := s.client.NewRequest("POST", u, utils.Encode(values, keys))
 	if err != nil {
