@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file. The format 
 - Update pr make file to use golangci-lint GitHub action.
 - Split url helpers and type helpers in to their own packages.
 
+
 ## [v0.5.0] - 2025-06-12
 ### Added
 - Added support for all endpoints under `/server/firewall/`.
