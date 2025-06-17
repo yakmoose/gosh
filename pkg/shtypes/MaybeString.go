@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:pkg/types/MaybeString.go
 package types //nolint:var-naming
+========
+package shtypes
+>>>>>>>> 13f5db68e6a2a700ee2cee509efb0b481bb4fff4:pkg/shtypes/MaybeString.go
 
 import "strings"
 
